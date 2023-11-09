@@ -8,7 +8,7 @@ public class Candidates {
     private String candidateName;
     private String candidateLastName;
     private String candidatePosition;
-    private static  byte[] candidateImage;
+    private byte[] candidateImage;
 
     public Candidates(String candidateName, String candidateLastName, String candidatePosition, byte[] candidateImage) {
         this.candidateName = candidateName;
@@ -46,7 +46,7 @@ public class Candidates {
         return candidatePosition;
     }
     
-    public static  byte[] getCandidateImage() {
+    public byte[] getCandidateImage() {
         return candidateImage;
     }
     public void groupPosition() {

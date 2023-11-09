@@ -18,11 +18,11 @@ import javax.swing.JScrollPane;
 
 public class ClientUser {
 	static List<String> positions = new ArrayList<>();
-	private static List<Candidates> candidatesList = new ArrayList<>();
-	static Candidates candidates; 
+	private final List<Candidates> candidatesList;
+	private Candidates candidates;
 	
     public ClientUser() throws UnknownHostException {
-    	
+        this.candidatesList = new ArrayList<>();
     	System.out.println("Client User");
     	InetAddress localAddress = InetAddress.getLocalHost();
     	String localIP = localAddress.getHostAddress();
@@ -50,7 +50,7 @@ public class ClientUser {
         
     }
     // METHOD TO RECEIVE THE NAME, SURNAME, POSITION AND IMAGE
-    private static void receiveCandidateData(String localIP, Socket socket) {
+    private void receiveCandidateData(String localIP, Socket socket) {
     	
         try {
         	
@@ -124,7 +124,7 @@ public class ClientUser {
     }
     
  // need to delete for test purposes
-    private static void displayImages() {
+    private  void displayImages() {
         // Create a JFrame
         JFrame frame = new JFrame("Candidate Images");
         frame.setSize(800, 600);
@@ -136,8 +136,6 @@ public class ClientUser {
 
         // Iterate through candidatesList and display images
         for (Candidates candidate : candidatesList) {
-        	
-        	 
         	System.out.println(candidate);
              
             byte[] imageBytes = candidate.getCandidateImage();
@@ -187,11 +185,11 @@ public class ClientUser {
     }
 
     // List<Candidates> candidates = someObject.getCandidatesList(); >>> Replace someObject with the appropriate instance
-    public static List<Candidates> getCandidatesList() {
+    public List<Candidates> getCandidatesList() {
         return candidatesList;
     }
     // List<String> positions = ClientUser.getPositions();
-    public static List<String> getPositions() {
+    public List<String> getPositions() {
         return positions;
     }
 

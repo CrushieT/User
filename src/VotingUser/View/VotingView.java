@@ -1,13 +1,9 @@
 package VotingUser.View;
 
-import java.awt.EventQueue;
-import java.awt.ScrollPane;
 import java.net.UnknownHostException;
 import java.util.List;
-import java.util.Map;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -17,7 +13,6 @@ import VotingUser.Model.Candidates;
 import VotingUser.Model.ClientUser;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -31,8 +26,11 @@ public class VotingView extends JFrame {
 	JLabel positionLabel;
 	
 	JPanel scrollPanel;
-	
-	public VotingView() {
+
+	private final ClientUser clientUser;
+
+	public VotingView(ClientUser clientUser) {
+		this.clientUser = clientUser;
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setBounds(400, 150, 1280, 800);
 		this.setTitle("Vote");
@@ -116,8 +114,8 @@ public class VotingView extends JFrame {
 	}
 	
 	public void addToPanel() {
-		List<Candidates> candidates = ClientUser.getCandidatesList();
-		List<String> positions = ClientUser.getPositions();
+		List<Candidates> candidates = clientUser.getCandidatesList();
+		List<String> positions = clientUser.getPositions();
 		System.out.println("Hello");
 		
 		
